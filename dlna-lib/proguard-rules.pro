@@ -19,3 +19,8 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+#dlna
+-dontwarn org.cybergarage.**
+-keep class org.cybergarage.** {*;}
+-keepattributes Annotation

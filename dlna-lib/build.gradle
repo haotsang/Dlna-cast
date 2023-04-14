@@ -1,7 +1,11 @@
 plugins {
     id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'maven-publish'
 }
+
+group = 'com.github.haotsang'//com.github.{你的的账号名}
+version = '1.0'
 
 android {
     namespace 'com.haotsang.dlna_lib'
@@ -36,5 +40,20 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     api files('libs/clink210.jar')
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.haotsang'
+                artifactId = 'Dlna-cast'
+                version = '1.0'
+            }
+        }
+    }
 }
